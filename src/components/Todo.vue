@@ -28,8 +28,13 @@
         </div>
       </div>
     </div>
+
     <div class="ui bottom attached green basic button" v-show="todo.done">Completed</div>
-    <div class="ui bottom attached red basic button" v-show="!todo.done">Complete</div>
+    <div
+      class="ui bottom attached red basic button"
+      v-on:click="completeTodo(todo)"
+      v-show="!todo.done"
+    >Complete</div>
   </div>
 </template>
 
@@ -42,6 +47,9 @@ export default {
     },
     hideForm() {
       this.isEditing = false;
+    },
+    completeTodo(todo) {
+      this.$emit("complete-todo", todo);
     },
     deleteTodo(todo) {
       this.$emit("delete-todo", todo);
