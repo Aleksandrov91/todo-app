@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <todo-list v-bind:todos="todos"></todo-list>
     <create-todo v-on:add-todo="addTodo"></create-todo>
   </div>

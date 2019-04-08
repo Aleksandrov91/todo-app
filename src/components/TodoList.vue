@@ -8,13 +8,13 @@
       v-on:complete-todo="completeTodo"
       v-for="todo in todos"
       v-bind:todo="todo"
+      v-bind:key="todo.title"
     ></todo>
   </div>
 </template>
 
 <script type="text/javascript">
 import Todo from "./Todo";
-import { close } from "fs";
 
 export default {
   props: ["todos"],
