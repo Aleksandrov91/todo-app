@@ -9,7 +9,7 @@
 
 <script type="text/javascript">
 import TodoList from "./../components/TodoList";
-
+//TODO: Add link to show all pending or completed tasks. They should refer to details view.
 export default {
   props: ["todos"],
   components: {
@@ -17,10 +17,10 @@ export default {
   },
   computed: {
     pendingTasks: function() {
-      return this.todos.filter(x => x.done === false);
+      return this.todos.filter(x => x.done === false).slice(0, 10);
     },
     completedTasks: function() {
-      return this.todos.filter(x => x.done === true);
+      return this.todos.filter(x => x.done === true).slice(0, 10);
     }
   }
 };
