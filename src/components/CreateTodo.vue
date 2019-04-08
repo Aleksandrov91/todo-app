@@ -51,7 +51,8 @@ export default {
           done: false
         });
 
-        this.newTodoText = "";
+        this.titleText = "";
+        this.projectText = "";
       }
 
       this.isCreating = false;
