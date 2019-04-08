@@ -1,15 +1,26 @@
 <template>
   <div>
-    <p>Completed Tasks: {{todos.filter(todo => {return todo.done === true}).length}}</p>
-    <p>Pending Tasks: {{todos.filter(todo => {return todo.done === false}).length}}</p>
+    <h2>Pending Tasks: ({{todos.filter(todo => {return todo.done === false}).length}})</h2>
+    <div class="ui grid">
+      <todo
+        v-on:delete-todo="deleteTodo"
+        v-on:complete-todo="completeTodo"
+        v-for="todo in pendingTasks"
+        v-bind:todo="todo"
+        v-bind:key="todo.title"
+      ></todo>
+    </div>
 
-    <todo
-      v-on:delete-todo="deleteTodo"
-      v-on:complete-todo="completeTodo"
-      v-for="todo in todos"
-      v-bind:todo="todo"
-      v-bind:key="todo.title"
-    ></todo>
+    <h2>Completed Tasks: ({{todos.filter(todo => {return todo.done === true}).length}})</h2>
+    <div class="ui grid">
+      <todo
+        v-on:delete-todo="deleteTodo"
+        v-on:complete-todo="completeTodo"
+        v-for="todo in completedTasks"
+        v-bind:todo="todo"
+        v-bind:key="todo.title"
+      ></todo>
+    </div>
   </div>
 </template>
 
@@ -20,6 +31,14 @@ export default {
   props: ["todos"],
   components: {
     Todo
+  },
+  computed: {
+    pendingTasks: function() {
+      return this.todos.filter(x => x.done === false);
+    },
+    completedTasks: function() {
+      return this.todos.filter(x => x.done === true);
+    }
   },
   methods: {
     completeTodo(todo) {
