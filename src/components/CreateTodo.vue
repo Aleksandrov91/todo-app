@@ -14,6 +14,16 @@
             <label>Project</label>
             <input v-model.trim="projectText" type="text" ref="project" defaultValue>
           </div>
+          <div class="field">
+            <label>Description</label>
+            <textarea
+              v-model.trim="todoContent"
+              type="text"
+              ref="description"
+              defaultValue
+              rows="3"
+            ></textarea>
+          </div>
           <div class="ui two button attached buttons">
             <button class="ui basic blue button" v-on:click="sendForm()">Create</button>
             <button class="ui basic red button" v-on:click="closeForm()">Cancel</button>
@@ -30,6 +40,7 @@ export default {
     return {
       titleText: "",
       projectText: "",
+      todoContent: "",
       isCreating: false
     };
   },
@@ -44,15 +55,18 @@ export default {
       if (this.titleText.length > 0 && this.projectText.length > 0) {
         const title = this.titleText;
         const project = this.projectText;
+        const description = this.todoContent;
 
         this.$emit("add-todo", {
           title,
           project,
+          description,
           done: false
         });
 
         this.titleText = "";
         this.projectText = "";
+        this.todoContent = "";
       }
 
       this.isCreating = false;
