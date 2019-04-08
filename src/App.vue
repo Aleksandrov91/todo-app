@@ -22,21 +22,29 @@ export default {
         {
           title: "Todo A",
           project: "Project A",
+          description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem",
           done: false
         },
         {
           title: "Todo B",
           project: "Project B",
+          description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem",
           done: true
         },
         {
           title: "Todo C",
           project: "Project C",
+          description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem",
           done: false
         },
         {
           title: "Todo D",
           project: "Project D",
+          description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem",
           done: false
         }
       ]
