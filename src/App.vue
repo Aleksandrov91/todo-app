@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <notifications group="app"/>
     <todo-list v-bind:todos="todos"></todo-list>
     <create-todo v-on:add-todo="addTodo"></create-todo>
   </div>
@@ -44,6 +45,12 @@ export default {
   methods: {
     addTodo(todo) {
       this.todos.push(todo);
+      this.$notify({
+        group: "app",
+        type: "success",
+        title: "Success",
+        text: "Your todo has been created!"
+      });
     }
   }
 };

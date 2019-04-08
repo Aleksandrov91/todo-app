@@ -25,10 +25,33 @@ export default {
     completeTodo(todo) {
       const todoIndex = this.todos.indexOf(todo);
       this.todos[todoIndex].done = true;
+      this.$notify({
+        group: "app",
+        type: "success",
+        title: "Success",
+        text: `${todo.title} todo has been completed!`
+      });
     },
     deleteTodo(todo) {
-      const todoIndex = this.todos.indexOf(todo);
-      this.todos.splice(todoIndex, 1);
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this todo!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(willDelete => {
+        if (willDelete) {
+          const todoIndex = this.todos.indexOf(todo);
+          this.todos.splice(todoIndex, 1);
+
+          this.$notify({
+            group: "app",
+            type: "success",
+            title: "Success",
+            text: "Your todo has been deleted!"
+          });
+        }
+      });
     }
   }
 };
