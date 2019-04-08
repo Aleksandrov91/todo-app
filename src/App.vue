@@ -1,19 +1,19 @@
 <template>
   <div id="app">
     <notifications group="app"/>
-    <todo-list v-bind:todos="todos"></todo-list>
+    <home v-bind:todos="todos"></home>
     <create-todo v-on:add-todo="addTodo"></create-todo>
   </div>
 </template>
 
 <script>
-import TodoList from "./components/TodoList";
+import Home from "./pages/Home";
 import CreateTodo from "./components/CreateTodo";
 
 export default {
   name: "app",
   components: {
-    TodoList,
+    Home,
     CreateTodo
   },
   data() {

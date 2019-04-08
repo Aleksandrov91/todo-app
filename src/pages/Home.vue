@@ -8,7 +8,8 @@
 </template>
 
 <script type="text/javascript">
-import List from "./List";
+// TODO: Rename component as Home
+import List from "./../components/List";
 
 export default {
   props: ["todos"],
